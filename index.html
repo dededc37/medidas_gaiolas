@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escolha o modelo de gaiola</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preload" as="image" href="src/modelo quadrado/botao.jpg">
+    <link rel="preload" as="image" href="src/modelo quadrado/largura.jpg">
+    <link rel="preload" as="image" href="src/modelo quadrado/comprimento.jpg">
+    <link rel="preload" as="image" href="src/modelo quadrado/altura.jpg">
+    <link rel="preload" as="image" href="src/modelo circular/botao.jpg">
+    <link rel="preload" as="image" href="src/modelo circular/largura.jpg">
+    <link rel="preload" as="image" href="src/modelo circular/comprimento.jpg">
+    <link rel="preload" as="image" href="src/modelo circular/altura.jpg">
+    <link rel="preload" as="image" href="src/modelo circular/aro.jpg">
+    <link rel="preload" as="image" href="src/modelo semicircular/botao.jpg">
+    <link rel="preload" as="image" href="src/modelo semicircular/largura.jpg">
+    <link rel="preload" as="image" href="src/modelo semicircular/comprimento.jpg">
+    <link rel="preload" as="image" href="src/modelo semicircular/alturaCentral.jpg">
+    <link rel="preload" as="image" href="src/modelo semicircular/alturaLateral.jpg">
+</head>
+<body>
+    <div class="container">
+        <h1 id="titulo-capa">Escolha o modelo de capa</h1>
+        <div class="botoes" id="botoes-capa">
+            <button class="capa-btn" data-capa="total">
+                <img src="src/capas/total.jpg" alt="Capa Total">
+            </button>
+            <button class="capa-btn" data-capa="lateral">
+                <img src="src/capas/lateral.jpg" alt="Capa Lateral">
+            </button>
+        </div>
+        <h1 id="titulo-principal" style="display:none;">Escolha o modelo de gaiola</h1>
+        <div class="botoes" id="botoes-gaiola" style="display:none;">
+            <button id="btn-voltar-gaiola" type="button">Voltar</button>
+            <button class="gaiola-btn" data-tipo="quadrada">
+                <img src="src/modelo quadrado/botao.jpg" alt="Modelo Quadrado">
+            </button>
+            <button class="gaiola-btn" data-tipo="circular">
+                <img src="src/modelo circular/botao.jpg" alt="Modelo Circular">
+            </button>
+            <button class="gaiola-btn" data-tipo="semicircular">
+                <img src="src/modelo semicircular/botao.jpg" alt="Modelo Semicircular">
+            </button>
+        </div>
+        <div id="formulario-gaiola" style="display:none;">
+            <div id="pergunta-container">
+                <img id="imagem-pergunta" src="" alt="Ilustração da medida" style="width:150px;height:150px;display:block;margin:0 auto 16px auto;">
+                <label id="label-pergunta" for="input-pergunta"></label>
+                <input type="number" id="input-pergunta" min="0" step="any" style="display:block;margin:16px auto;">
+                <div class="botoes-formulario">
+                    <button id="btn-voltar" type="button">Voltar</button>
+                    <button id="btn-proxima" type="button">Próxima</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+      // Pré-carregamento de imagens para evitar travamentos
+      const imagensParaPrecarregar = [
+        'src/modelo quadrado/botao.jpg',
+        'src/modelo quadrado/largura.jpg',
+        'src/modelo quadrado/comprimento.jpg',
+        'src/modelo quadrado/altura.jpg',
+        'src/modelo circular/botao.jpg',
+        'src/modelo circular/largura.jpg',
+        'src/modelo circular/comprimento.jpg',
+        'src/modelo circular/altura.jpg',
+        'src/modelo circular/aro.jpg',
+        'src/modelo semicircular/botao.jpg',
+        'src/modelo semicircular/largura.jpg',
+        'src/modelo semicircular/comprimento.jpg',
+        'src/modelo semicircular/alturaCentral.jpg',
+        'src/modelo semicircular/alturaLateral.jpg'
+      ];
+      imagensParaPrecarregar.forEach(src => {
+        const img = new window.Image();
+        img.src = src;
+      });
+    </script>
+</body>
+</html> 
