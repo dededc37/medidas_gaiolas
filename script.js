@@ -164,7 +164,9 @@ document.addEventListener('DOMContentLoaded', function() {
             perguntasAtuais.forEach(p => {
                 mensagem += `${p.campo}: ${respostas[p.campo]} cm%0A`;
             });
-            const numero = '5531988196554';
+            // Ofuscação do número de telefone usando base64
+            const encoded = 'NTUzMTk4ODE5NjU1NA==';
+            const numero = atob(encoded);
             const url = `https://wa.me/${numero}?text=${mensagem}`;
             window.open(url, '_blank');
             // Após finalizar, volta para seleção de capa
