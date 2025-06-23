@@ -15,6 +15,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const btnVoltarGaiola = document.getElementById('btn-voltar-gaiola');
     let modeloCapa = null;
 
+    // Pergunta comum para todos os modelos
+    const perguntaUnidades = {
+        texto: 'Quantas unidades com essas medidas?',
+        campo: 'unidades',
+        imagem: '' // sem imagem
+    };
+
     // Perguntas para gaiola quadrada, cada uma com campo para imagem
     const perguntasQuadrada = [
         {
@@ -31,7 +38,8 @@ document.addEventListener('DOMContentLoaded', function() {
             texto: 'Qual a altura da gaiola (cm)?',
             campo: 'altura',
             imagem: 'src/modelo quadrado/altura.jpg' // Troque aqui para a imagem de altura
-        }
+        },
+        perguntaUnidades
     ];
 
     // Perguntas para gaiola circular, cada uma com campo para imagem
@@ -55,7 +63,8 @@ document.addEventListener('DOMContentLoaded', function() {
             texto: 'Lateral, do fundo até o gancho (cm)?',
             campo: 'aro',
             imagem: 'src/modelo circular/aro.jpg' // Troque aqui para a imagem do aro
-        }
+        },
+        perguntaUnidades
     ];
 
     // Perguntas para gaiola semicircular, cada uma com campo para imagem
@@ -79,7 +88,8 @@ document.addEventListener('DOMContentLoaded', function() {
             texto: 'Qual a altura lateral da gaiola (cm)?',
             campo: 'altura_lateral',
             imagem: 'src/modelo semicircular/alturaLateral.jpg' // Troque aqui para a imagem de altura lateral
-        }
+        },
+        perguntaUnidades
     ];
 
     let respostas = {};
@@ -136,7 +146,12 @@ document.addEventListener('DOMContentLoaded', function() {
     function mostrarPergunta() {
         const p = perguntasAtuais[perguntaAtual];
         labelPergunta.textContent = p.texto;
-        imagemPergunta.src = p.imagem;
+        if (p.imagem) {
+            imagemPergunta.src = p.imagem;
+            imagemPergunta.style.display = 'block';
+        } else {
+            imagemPergunta.style.display = 'none';
+        }
         inputPergunta.value = '';
         inputPergunta.focus();
         if (perguntaAtual === perguntasAtuais.length - 1) {
@@ -162,8 +177,11 @@ document.addEventListener('DOMContentLoaded', function() {
             let mensagem = `Modelo de capa: ${modeloCapa === 'total' ? 'Capa Total' : 'Capa Lateral'}%0A`;
             mensagem += `Modelo de gaiola: ${modeloAtual.charAt(0).toUpperCase() + modeloAtual.slice(1)}%0A`;
             perguntasAtuais.forEach(p => {
-                mensagem += `${p.campo}: ${respostas[p.campo]} cm%0A`;
+                if (p.campo !== 'unidades') {
+                    mensagem += `${p.campo}: ${respostas[p.campo]} cm%0A`;
+                }
             });
+            mensagem += `Unidades: ${respostas['unidades']}`;
             // Ofuscação do número de telefone usando base64
             const encoded = 'NTUzMTk4ODE5NjU1NA==';
             const numero = atob(encoded);
