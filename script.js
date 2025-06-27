@@ -89,6 +89,11 @@ document.addEventListener('DOMContentLoaded', function() {
             campo: 'altura_lateral',
             imagem: 'src/modelo semicircular/alturaLateral.jpg' // Troque aqui para a imagem de altura lateral
         },
+        {
+            texto: 'Lateral, do fundo até o gancho (cm)?',
+            campo: 'aro',
+            imagem: 'src/modelo semicircular/aro.jpg' // Troque aqui para a imagem do aro
+        },
         perguntaUnidades
     ];
 
@@ -129,7 +134,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 : perguntasCircular;
         } else if (tipo === 'semicircular') {
             perguntasAtuais = (modeloCapa === 'lateral')
-                ? perguntasSemicircular.filter(p => !['comprimento','altura_central'].includes(p.campo))
+                ? perguntasSemicircular.filter(p => ['largura','aro','unidades'].includes(p.campo))
                 : perguntasSemicircular;
         } else {
             return;
